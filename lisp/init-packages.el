@@ -1,0 +1,106 @@
+ (when (>= emacs-major-version 24)
+     (require 'package)
+     (package-initialize)
+     (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
+		      ("melpa" . "http://elpa.emacs-china.org/melpa/"))))
+
+;; 注意 elpa.emacs-china.org 是 Emacs China 中文社区在国内搭建的一个 ELPA 镜像
+
+ ;; cl - Common Lisp Extension
+ (require 'cl)
+
+ ;; Add Packages
+ (defvar my/packages '(
+		;; --- Auto-completion ---
+		company-c-headers;;仅作用在C下
+		company
+		flycheck
+		yasnippet
+		auto-complete-c-headers
+		racket-mode
+		;; --- Better Editor ---
+		hungry-delete
+		swiper
+		counsel
+		smartparens
+		popwin
+		helm
+		helm-ag
+		nyan-mode
+		;; --- Major Mode ---
+		js2-mode
+		;; --- Minor Mode ---
+		nodejs-repl
+		exec-path-from-shell
+		xcscope
+		;; --- Themes ---
+		monokai-theme
+		spacemacs-theme
+		;; solarized-theme
+		) "Default packages")
+
+ (setq package-selected-packages my/packages)
+
+ (defun my/packages-installed-p ()
+     (loop for pkg in my/packages
+	   when (not (package-installed-p pkg)) do (return nil)
+	   finally (return t)))
+
+ (unless (my/packages-installed-p)
+     (message "%s" "Refreshing package database...")
+     (package-refresh-contents)
+     (dolist (pkg my/packages)
+       (when (not (package-installed-p pkg))
+	 (package-install pkg))))
+
+ ;; Find Executable Path on OS X
+ (when (memq window-system '(mac ns))
+   (exec-path-from-shell-initialize))
+
+;;-----------------------------------------------------------------
+;;load-theme
+(load-theme 'spacemacs-dark 1)
+
+;;Company-mode
+(global-company-mode 1)
+(add-to-list 'company-backends 'company-c-headers)
+
+(require 'popwin)
+(popwin-mode 1)
+
+(require 'helm)
+
+;;----------------------------------------------------------------
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
+(add-to-list 'load-path
+              "~/.emacs.d/plugins/yasnippet")
+(require 'yasnippet)
+
+;;(smartparens-global-mode t)
+(require 'smartparens-config)
+(add-hook 'c-mode-hook 'smartparens-mode);;在c-mode中使用括号补全
+(add-hook 'c++-mode-hook 'smartparens-mode);;在c++-mode中使用括号补全
+
+;;smartparens修复方案
+
+;;(push 'c-electric-paren sp--special-self-insert-commands)
+;;(push 'c-electric-brace sp--special-self-insert-commands)
+
+(if (version<   "26.0" emacs-version)
+    (setq sp-escape-quotes-after-insert nil))
+;;end
+
+(require 'nyan-mode)
+(nyan-mode t)
+
+(require 'xcscope)
+(cscope-setup)
+
+(setq auto-mode-alist
+      (append
+       '(("\\.rkt\\'" . racket-mode))
+       auto-mode-alist))
+
+
+(global-undo-tree-mode);;全局撤回树
