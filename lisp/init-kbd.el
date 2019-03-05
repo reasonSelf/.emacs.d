@@ -29,5 +29,12 @@
 (setq c-basic-offset 4)
 (setq c-default-style "linux") ;;划重点
 
-;;(global-set-key "C-c p" 'compile)
+(global-set-key (kbd "C-c h a") 'helm-do-ag-this-file)
+;;helm-gtags-setting
+(global-set-key (kbd "C-c g t") 'helm-gtags-find-tag)
+(global-set-key (kbd "C-c g s") 'helm-gtags-find-symbol)
+(global-set-key (kbd "C-c g f") 'helm-gtags-tags-in-this-function)
+(global-set-key (kbd "RET") 'newline-and-indent)
+(global-set-key (kbd "C-c p") 'compile)
 
+(setq recentf-max-menu-items 25);;set recentf file max 25

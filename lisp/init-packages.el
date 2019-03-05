@@ -37,6 +37,10 @@
 		monokai-theme
 		spacemacs-theme
 		;; solarized-theme
+		;; --- IDE for cpp -----
+		ggtags
+		helm-gtags
+		function-args ;;for helm
 		) "Default packages")
 
  (setq package-selected-packages my/packages)
@@ -63,7 +67,18 @@
 
 ;;Company-mode
 (global-company-mode 1)
+;;(add-hook 'c++-mode 'company-mode)
+;;(add-hook 'c-mode 'company-mode)
+;;(add-hook 'lisp-mode 'company-mode)
 (add-to-list 'company-backends 'company-c-headers)
+
+;;for copany-clang
+;;clang玄学区
+(setq company-backends (delete 'company-semantic company-backends))
+
+
+
+;;-----end company
 
 (require 'popwin)
 (popwin-mode 1)
@@ -100,7 +115,27 @@
 (setq auto-mode-alist
       (append
        '(("\\.rkt\\'" . racket-mode))
+       '(("\\.h\\'" . c++-mode))
        auto-mode-alist))
+
+;;(setq auto-mode-alist
+;;      (append
+;;       '(("\\.h\\'" . c++-mode))))
 
 
 (global-undo-tree-mode);;全局撤回树
+
+;;ggtags configtion
+(require 'ggtags)
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'asm-mode)
+              (ggtags-mode 1))))
+
+(require 'function-args)
+(add-hook 'c-mode-common-hook
+	  (lambda ()
+	    (when (derived-mode-p 'c-mode 'c++-mode)
+	      (function-args-mode 1))))
+
+(setq c-default-style "linux")
