@@ -38,3 +38,6 @@
 (global-set-key (kbd "C-c p") 'compile)
 
 (setq recentf-max-menu-items 25);;set recentf file max 25
+
+(global-set-key (kbd "<f5>") 'sr-speedbar-open)
+(global-set-key (kbd "<f6>") 'sr-speedbar-close)

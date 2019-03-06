@@ -27,8 +27,10 @@
 		helm
 		helm-ag
 		nyan-mode
+		sr-speedbar;;file-tree
 		;; --- Major Mode ---
 		js2-mode
+		markdown-mode ;;for markdown
 		;; --- Minor Mode ---
 		nodejs-repl
 		exec-path-from-shell
@@ -96,6 +98,7 @@
 (require 'smartparens-config)
 (add-hook 'c-mode-hook 'smartparens-mode);;在c-mode中使用括号补全
 (add-hook 'c++-mode-hook 'smartparens-mode);;在c++-mode中使用括号补全
+(add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
 
 ;;smartparens修复方案
 
@@ -139,3 +142,6 @@
 	      (function-args-mode 1))))
 
 (setq c-default-style "linux")
+
+;;for markdown
+(require 'markdown-mode)
