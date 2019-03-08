@@ -35,6 +35,7 @@
 		nodejs-repl
 		exec-path-from-shell
 		xcscope
+		google-translate
 		;; --- Themes ---
 		monokai-theme
 		spacemacs-theme
@@ -145,3 +146,16 @@
 
 ;;for markdown
 (require 'markdown-mode)
+
+
+;;for google-translate
+;;不能用,被墙了
+(require 'google-translate)
+(setq-default google-translate-enable-ido-completion t)
+
+(setq-default google-translate-default-source-language "en")
+(setq-default google-translate-default-target-language "zh-CN")
+
+;;M-x m g t
+
+;;end
