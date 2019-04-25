@@ -44,6 +44,8 @@
 		ggtags
 		helm-gtags
 		function-args ;;for helm
+		;; --- For Scheme ----
+		paredit
 		) "Default packages")
 
  (setq package-selected-packages my/packages)
