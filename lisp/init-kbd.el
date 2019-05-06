@@ -41,3 +41,4 @@
 
 (global-set-key (kbd "<f5>") 'sr-speedbar-open)
 (global-set-key (kbd "<f6>") 'sr-speedbar-close)
+
