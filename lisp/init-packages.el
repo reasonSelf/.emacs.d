@@ -46,6 +46,8 @@
 		function-args ;;for helm
 		;; --- For Scheme ----
 		paredit
+		;; --- indent guide ---
+		indent-guide
 		) "Default packages")
 
  (setq package-selected-packages my/packages)
@@ -162,3 +164,6 @@
 
 ;;end
 
+;;indent-guide
+(require 'indent-guide)
+(indent-guide-global-mode)
