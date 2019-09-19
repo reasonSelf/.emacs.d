@@ -48,6 +48,8 @@
 		paredit
 		;; --- indent guide ---
 		indent-guide
+		;; --- for scheme ---
+		geiser
 		) "Default packages")
 
  (setq package-selected-packages my/packages)
@@ -167,3 +169,7 @@
 ;;indent-guide
 (require 'indent-guide)
 (indent-guide-global-mode)
+
+;;scheme
+(require 'geiser)
+;;end
