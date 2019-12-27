@@ -23,7 +23,7 @@
  '(company-minimum-prefix-length 1)
  '(custom-safe-themes
    (quote
-    ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
+    ("fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
  '(org-agenda-files (quote ("~/.emacs.d/lisp/gtd.org")))
  '(package-selected-packages
    (quote

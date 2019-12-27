@@ -172,4 +172,5 @@
 
 ;;scheme
 (require 'geiser)
+(setq geiser-active-implementations '(chez))
 ;;end
