@@ -1,10 +1,18 @@
- (when (>= emacs-major-version 24)
-     (require 'package)
-     (package-initialize)
-     (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
-		      ("melpa" . "http://elpa.emacs-china.org/melpa/"))))
+;; (when (>= emacs-major-version 24)
+;;     (require 'package)
+;;     (package-initialize)
+;;     (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
+;;		      ("melpa" . "https://melpa.org/packages/"))))
 
 ;; 注意 elpa.emacs-china.org 是 Emacs China 中文社区在国内搭建的一个 ELPA 镜像
+
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
+;; and `package-pinned-packages`. Most users will not need or want to do this.
+;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(package-initialize)
+
 
  ;; cl - Common Lisp Extension
  (require 'cl)
@@ -133,7 +141,7 @@
 ;;       '(("\\.h\\'" . c++-mode))))
 
 
-(global-undo-tree-mode);;全局撤回树
+;;(global-undo-tree-mode);;全局撤回树
 
 ;;ggtags configtion
 (require 'ggtags)
